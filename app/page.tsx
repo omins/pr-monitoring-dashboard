@@ -44,7 +44,7 @@ const crisisAlerts: CrisisAlert[] = [
     id: 1,
     level: 'danger',
     title: 'KT 개인정보 유출 의혹 보도',
-    url: 'https://example.com/news/1',
+    url: 'https://www.chosun.com/',
     journalist_name: '김기자',
     journalist_phone: '010-1234-5678',
     reason:
@@ -60,7 +60,7 @@ const crisisAlerts: CrisisAlert[] = [
     id: 2,
     level: 'warning',
     title: '통신요금 인상 논란 확산',
-    url: 'https://example.com/news/2',
+    url: 'https://www.hankyung.com/',
     journalist_name: '박기자',
     journalist_phone: '010-2345-6789',
     reason:
@@ -76,7 +76,7 @@ const crisisAlerts: CrisisAlert[] = [
     id: 3,
     level: 'warning',
     title: '5G 서비스 품질 문제 제기',
-    url: 'https://example.com/news/3',
+    url: 'https://m.etnews.com/',
     journalist_name: '이기자',
     journalist_phone: '010-3456-7890',
     reason:

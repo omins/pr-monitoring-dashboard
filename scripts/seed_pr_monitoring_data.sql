@@ -3,7 +3,7 @@
 
 -- Insert briefings
 INSERT INTO briefings (id, date, report_at, content, total_articles) VALUES
-('550e8400-e29b-41d4-a716-446655440001', '2024-09-05', '2024-09-05 08:00:00+09', 
+('550e8400-e29b-41d4-a716-446655440001', '2025-09-05', '2025-09-05 08:00:00+09', 
 '금일 당사 관련 주요 언론보도 현황입니다.
 신제품 출시에 대해 긍정적으로 게재되었습니다.
 더불어 시장 점유율 확대 전략이라고 언급되었습니다.
@@ -13,7 +13,7 @@ INSERT INTO briefings (id, date, report_at, content, total_articles) VALUES
 관련 법 개정에 나설 예정입니다.
 기존 규제는 완화되고, 혁신 지원이 의무화될 예정입니다.', 45),
 
-('550e8400-e29b-41d4-a716-446655440002', '2024-09-08', '2024-09-08 08:00:00+09',
+('550e8400-e29b-41d4-a716-446655440002', '2025-09-08', '2025-09-08 08:00:00+09',
 '금일 당사 관련 주요 언론보도 현황입니다.
 분기 실적 발표에 대해 집중 보도되었습니다.
 더불어 해외 진출 계획이 주목받고 있습니다.
@@ -23,7 +23,7 @@ INSERT INTO briefings (id, date, report_at, content, total_articles) VALUES
 국내 기업들의 해외 진출이 활발합니다.
 정부 지원 정책도 확대될 예정입니다.', 38),
 
-('550e8400-e29b-41d4-a716-446655440003', '2024-09-09', '2024-09-09 08:00:00+09',
+('550e8400-e29b-41d4-a716-446655440003', '2025-09-09', '2025-09-09 08:00:00+09',
 '금일 당사 관련 주요 언론보도 현황입니다.
 신기술 개발 성과에 대해 주요 언론에서 다뤘습니다.
 더불어 지속가능경영 실천이 높이 평가받고 있습니다.
@@ -32,13 +32,13 @@ INSERT INTO briefings (id, date, report_at, content, total_articles) VALUES
 ESG 경영이 기업 평가의 핵심 요소로 부상하며
 관련 투자와 정책이 확대되고 있습니다.', 42);
 
--- Insert categories for 2024-09-05
+-- Insert categories for 2025-09-05
 INSERT INTO categories (id, briefing_id, name, count) VALUES
 ('660e8400-e29b-41d4-a716-446655440001', '550e8400-e29b-41d4-a716-446655440001', '재무 및 경영 관련 기사', 25),
 ('660e8400-e29b-41d4-a716-446655440002', '550e8400-e29b-41d4-a716-446655440001', '일반 기사', 12),
 ('660e8400-e29b-41d4-a716-446655440003', '550e8400-e29b-41d4-a716-446655440001', '업계 동향', 8);
 
--- Insert articles for 2024-09-05
+-- Insert articles for 2025-09-05
 INSERT INTO articles (category_id, title, source, url, count) VALUES
 ('660e8400-e29b-41d4-a716-446655440001', '신제품 출시로 매출 증가 전망', '한국경제', 'https://hankyung.com/article/1', 12),
 ('660e8400-e29b-41d4-a716-446655440001', '디지털 전환 투자 확대', '매일경제', 'https://mk.co.kr/article/1', 13),
@@ -47,13 +47,13 @@ INSERT INTO articles (category_id, title, source, url, count) VALUES
 ('660e8400-e29b-41d4-a716-446655440003', '업계 전반 성장세', '서울경제', 'https://sedaily.com/article/1', 4),
 ('660e8400-e29b-41d4-a716-446655440003', '경쟁사 동향 분석', '이데일리', 'https://edaily.co.kr/article/1', 4);
 
--- Insert categories for 2024-09-08
+-- Insert categories for 2025-09-08
 INSERT INTO categories (id, briefing_id, name, count) VALUES
 ('660e8400-e29b-41d4-a716-446655440004', '550e8400-e29b-41d4-a716-446655440002', '재무 및 경영 관련 기사', 22),
 ('660e8400-e29b-41d4-a716-446655440005', '550e8400-e29b-41d4-a716-446655440002', '일반 기사', 10),
 ('660e8400-e29b-41d4-a716-446655440006', '550e8400-e29b-41d4-a716-446655440002', '업계 동향', 6);
 
--- Insert articles for 2024-09-08
+-- Insert articles for 2025-09-08
 INSERT INTO articles (category_id, title, source, url, count) VALUES
 ('660e8400-e29b-41d4-a716-446655440004', '3분기 실적 시장 기대치 상회', '한국경제', 'https://hankyung.com/article/2', 11),
 ('660e8400-e29b-41d4-a716-446655440004', '해외 진출 로드맵 공개', '매일경제', 'https://mk.co.kr/article/2', 11),
@@ -62,13 +62,13 @@ INSERT INTO articles (category_id, title, source, url, count) VALUES
 ('660e8400-e29b-41d4-a716-446655440006', '글로벌 시장 진출 트렌드', '서울경제', 'https://sedaily.com/article/2', 3),
 ('660e8400-e29b-41d4-a716-446655440006', '업계 리더십 평가', '이데일리', 'https://edaily.co.kr/article/2', 3);
 
--- Insert categories for 2024-09-09
+-- Insert categories for 2025-09-09
 INSERT INTO categories (id, briefing_id, name, count) VALUES
 ('660e8400-e29b-41d4-a716-446655440007', '550e8400-e29b-41d4-a716-446655440003', '재무 및 경영 관련 기사', 24),
 ('660e8400-e29b-41d4-a716-446655440008', '550e8400-e29b-41d4-a716-446655440003', '일반 기사', 11),
 ('660e8400-e29b-41d4-a716-446655440009', '550e8400-e29b-41d4-a716-446655440003', '업계 동향', 7);
 
--- Insert articles for 2024-09-09
+-- Insert articles for 2025-09-09
 INSERT INTO articles (category_id, title, source, url, count) VALUES
 ('660e8400-e29b-41d4-a716-446655440007', '신기술 특허 출원 완료', '한국경제', 'https://hankyung.com/article/3', 12),
 ('660e8400-e29b-41d4-a716-446655440007', 'ESG 경영 우수 기업 선정', '매일경제', 'https://mk.co.kr/article/3', 12),
