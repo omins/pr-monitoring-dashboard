@@ -29,10 +29,9 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
             <Avatar className='w-8 h-8'>
               <AvatarFallback className='text-[10px] font-semibold text-white bg-gradient-to-br from-emerald-500 via-sky-500 to-fuchsia-600'></AvatarFallback>
             </Avatar>
-            <span className='font-semibold text-gray-900'>K-Intelligence</span>
+            <span className='font-semibold text-gray-900'>Mi:dm 지킴이</span>
           </div>
           <div className='text-sm text-gray-500'>
-            <span>PR 모니터링</span> <span className='mx-1'>/</span>
             <span>
               {pathname === '/'
                 ? '실시간 위기 대응 센터'

@@ -8,9 +8,8 @@ import { Suspense } from 'react';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'PR monitoring',
-  description: 'PR monitoring system bakcked by Mi:dm AI',
-  generator: 'v0.app',
+  title: 'Mi:dm 지킴이',
+  description: '기업 PR팀용 위기 대응, 브리핑 자동화 솔루션 Mi:dm 지킴이',
 };
 
 export default function RootLayout({
