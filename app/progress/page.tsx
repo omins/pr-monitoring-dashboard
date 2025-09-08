@@ -48,7 +48,31 @@ const yesterdayDate = new Date(now);
 yesterdayDate.setDate(now.getDate() - 1);
 const yesterday = formatKoreanDate(yesterdayDate);
 
-const workflowData = [
+type WorkflowStatus = 'running' | 'success' | 'failed' | 'pending';
+type LogLevel = 'ERROR' | 'WARNING' | 'SUCCESS' | 'INFO';
+type Workflow = {
+  id: number;
+  name: string;
+  started: string;
+  duration: string;
+  status: WorkflowStatus;
+  error: string | null;
+  progress: number;
+  nextRun: string;
+};
+type SystemMetric = {
+  label: string;
+  value: string;
+  status: WorkflowStatus;
+};
+type RecentLog = {
+  time: string;
+  level: LogLevel;
+  message: string;
+  workflow: string;
+};
+
+const workflowData: Workflow[] = [
   {
     id: 6734,
     name: '네이버 뉴스 모니터링',
@@ -111,14 +135,14 @@ const workflowData = [
   },
 ];
 
-const systemMetrics = [
+const systemMetrics: SystemMetric[] = [
   { label: '실행 중인 작업', value: '2', status: 'running' },
   { label: '완료된 작업', value: '3', status: 'success' },
   { label: '실패한 작업', value: '1', status: 'failed' },
   { label: '대기 중인 작업', value: '0', status: 'pending' },
 ];
 
-const recentLogs = [
+const recentLogs: RecentLog[] = [
   {
     time: '10:48:32',
     level: 'INFO',
@@ -162,7 +186,7 @@ export default function WorkflowProgress() {
     });
   };
 
-  const getStatusColor = status => {
+  const getStatusColor = (status: WorkflowStatus) => {
     switch (status) {
       case 'running':
         return 'bg-blue-100 text-blue-700';
@@ -177,7 +201,7 @@ export default function WorkflowProgress() {
     }
   };
 
-  const getStatusText = status => {
+  const getStatusText = (status: WorkflowStatus) => {
     switch (status) {
       case 'running':
         return '실행중';
@@ -192,7 +216,7 @@ export default function WorkflowProgress() {
     }
   };
 
-  const getLevelColor = level => {
+  const getLevelColor = (level: LogLevel) => {
     switch (level) {
       case 'ERROR':
         return 'text-red-600';
@@ -340,7 +364,7 @@ export default function WorkflowProgress() {
                           )} border`}
                         >
                           {workflow.status === 'running' && (
-                            <div className='w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse'></div>
+                            <div className='w-2 h-2 bg-blue-500 rounded-full mr-2 shimmer'></div>
                           )}
                           {workflow.status === 'success' && (
                             <CheckCircle className='w-3 h-3 mr-1' />
@@ -362,9 +386,7 @@ export default function WorkflowProgress() {
                                   ? 'bg-red-500'
                                   : 'bg-blue-500'
                               } ${
-                                workflow.status === 'running'
-                                  ? 'animate-pulse'
-                                  : ''
+                                workflow.status === 'running' ? 'shimmer' : ''
                               }`}
                               style={{ width: `${workflow.progress}%` }}
                             ></div>
