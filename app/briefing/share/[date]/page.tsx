@@ -20,6 +20,7 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
+import { mockBriefingData } from '@/lib/mock-data';
 
 interface BriefingSource {
   name: string;
@@ -41,166 +42,51 @@ interface BriefingEntry {
   stats: { total: number; positive: number; caution: number; sources: number };
 }
 
-const briefingDataByDate: Record<string, BriefingEntry> = {
-  '2025-09-05': {
-    report_at: '2025년 9월 5일',
-    content: `금일 당사 관련 주요 언론보도 현황입니다.
+const transformMockDataToBriefingEntry = (
+  date: string
+): BriefingEntry | null => {
+  const mockData = mockBriefingData[date as keyof typeof mockBriefingData];
+  if (!mockData) return null;
 
-개인정보 보호 강화 방안에 대해 게재되었습니다.
-더불어 5G 네트워크 품질 개선 노력이라고 언급되었습니다.
+  const groupedArticles = mockData.articles.reduce((acc, article) => {
+    const categoryName = article.category || '기타';
+    if (!acc[categoryName]) {
+      acc[categoryName] = [];
+    }
+    acc[categoryName].push(article);
+    return acc;
+  }, {} as Record<string, typeof mockData.articles>);
 
-주요 업계 동향입니다.
-윤석열 대통령의 지시에 따라
-정부는 개인정보보호법 개정에 나설 예정입니다.
-기존 과징금은 매출액의 3%로 강화되고, 개인정보 영향평가가 의무화될 예정입니다.
-(https://www.chosun.com/economy/tech_it/2024/09/05/privacy-law-reform/)`,
+  const articles: BriefingCategory[] = Object.entries(groupedArticles).map(
+    ([category, categoryArticles]) => ({
+      category,
+      count: categoryArticles.length,
+      sources: categoryArticles.map(article => ({
+        name: article.media_outlet,
+        title: article.title,
+        count: 1,
+        url: article.url,
+      })),
+    })
+  );
 
-    articles: [
-      {
-        category: '재무 및 경영 관련 기사',
-        count: 25,
-        sources: [
-          {
-            name: '조선일보',
-            title: 'KT, 개인정보 보호 투자 확대',
-            count: 12,
-            url: 'https://www.chosun.com/economy/tech_it/2024/09/05/kt-privacy-investment/',
-          },
-          {
-            name: '한국경제',
-            title: '통신업계 규제 강화 대응',
-            count: 13,
-            url: 'https://www.hankyung.com/economy/article/2024090512341',
-          },
-        ],
-      },
-      {
-        category: '일반 기사',
-        count: 15,
-        sources: [
-          {
-            name: '중앙일보',
-            title: '5G 네트워크 품질 개선 현황',
-            count: 8,
-            url: 'https://www.joongang.co.kr/article/25199876',
-          },
-          {
-            name: '동아일보',
-            title: '통신 3사 서비스 경쟁',
-            count: 7,
-            url: 'https://www.donga.com/news/Economy/article/all/20240905/127456789/1',
-          },
-        ],
-      },
-    ],
-    stats: { total: 40, positive: 28, caution: 8, sources: 12 },
-  },
-  '2025-09-08': {
-    report_at: '2025년 9월 8일',
-    content: `금일 당사 관련 주요 언론보도 현황입니다.
+  const totalArticles = mockData.articles.length;
+  const uniqueSources = new Set(mockData.articles.map(a => a.media_outlet))
+    .size;
 
-AI 서비스 확장 계획에 대해 집중 보도되었습니다.
-더불어 디지털 헬스케어 사업 진출이라고 언급되었습니다.
-
-주요 업계 동향입니다.
-과학기술정보통신부 장관의 발표에 따라
-정부는 AI 산업 육성법 제정에 나설 예정입니다.
-기존 규제 샌드박스는 확대되고, AI 윤리 가이드라인이 의무화될 예정입니다.
-(https://www.etnews.com/20240908000123)`,
-
-    articles: [
-      {
-        category: '재무 및 경영 관련 기사',
-        count: 35,
-        sources: [
-          {
-            name: '전자신문',
-            title: 'KT, AI 플랫폼 투자 본격화',
-            count: 18,
-            url: 'https://www.etnews.com/20240908000456',
-          },
-          {
-            name: '디지털타임스',
-            title: '통신사 AI 경쟁 가속화',
-            count: 17,
-            url: 'https://www.dt.co.kr/contents.html?article_no=2024090802109931731001',
-          },
-        ],
-      },
-      {
-        category: '기술 및 혁신',
-        count: 22,
-        sources: [
-          {
-            name: '아이뉴스24',
-            title: 'KT, 헬스케어 AI 솔루션 공개',
-            count: 12,
-            url: 'https://www.inews24.com/view/1234567',
-          },
-          {
-            name: 'ZDNet Korea',
-            title: '통신업계 디지털 전환 가속',
-            count: 10,
-            url: 'https://zdnet.co.kr/view/?no=20240908123456',
-          },
-        ],
-      },
-    ],
-    stats: { total: 57, positive: 45, caution: 6, sources: 16 },
-  },
-  '2025-09-09': {
-    report_at: '2025년 9월 9일',
-    content: `금일 당사 관련 주요 언론보도 현황입니다.
-
-ESG 경영 성과에 대해 긍정적으로 보도되었습니다.
-더불어 탄소중립 달성 로드맵이라고 언급되었습니다.
-
-주요 업계 동향입니다.
-환경부 장관의 발표에 따라
-정부는 탄소중립 기본법 시행령 개정에 나설 예정입니다.
-기존 탄소배출권은 확대되고, 녹색금융 지원이 강화될 예정입니다.
-(https://www.mk.co.kr/news/economy/10845123)`,
-
-    articles: [
-      {
-        category: 'ESG 및 지속가능경영',
-        count: 28,
-        sources: [
-          {
-            name: '매일경제',
-            title: 'KT, ESG 경영 우수 평가',
-            count: 15,
-            url: 'https://www.mk.co.kr/news/economy/10845456',
-          },
-          {
-            name: '서울경제',
-            title: '통신업계 친환경 투자 확대',
-            count: 13,
-            url: 'https://www.sedaily.com/NewsView/29ABCD123',
-          },
-        ],
-      },
-      {
-        category: '사회공헌 활동',
-        count: 18,
-        sources: [
-          {
-            name: '연합뉴스',
-            title: 'KT, 디지털 격차 해소 사업',
-            count: 10,
-            url: 'https://www.yna.co.kr/view/AKR20240909123000017',
-          },
-          {
-            name: '뉴시스',
-            title: '통신 3사 사회적 책임 강화',
-            count: 8,
-            url: 'https://newsis.com/view/?id=NISX20240909_0002456789',
-          },
-        ],
-      },
-    ],
-    stats: { total: 46, positive: 38, caution: 4, sources: 14 },
-  },
+  return {
+    report_at: `${date.split('-')[0]}년 ${parseInt(
+      date.split('-')[1]
+    )}월 ${parseInt(date.split('-')[2])}일`,
+    content: mockData.content,
+    articles,
+    stats: {
+      total: totalArticles,
+      positive: Math.floor(totalArticles * 0.7),
+      caution: Math.floor(totalArticles * 0.2),
+      sources: uniqueSources,
+    },
+  };
 };
 
 export default function SharedBriefing() {
@@ -210,7 +96,7 @@ export default function SharedBriefing() {
 
   useEffect(() => {
     const dateParam = params.date as string;
-    const data = briefingDataByDate[dateParam];
+    const data = transformMockDataToBriefingEntry(dateParam);
     if (data) {
       setBriefingData(data);
     }

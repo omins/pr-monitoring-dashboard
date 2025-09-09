@@ -28,7 +28,6 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { DashboardLayout } from '@/components/dashboard-layout';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/lib/supabase';
 import { mockBriefingData } from '@/lib/mock-data';
 
 interface BriefingData {
@@ -73,123 +72,42 @@ export default function MorningBriefing() {
   const fetchBriefingData = async (date: string) => {
     setLoading(true);
     try {
-      if (!supabase) {
-        console.log('[v0] Using mock data - Supabase not configured');
-        const mockData =
-          mockBriefingData[date as keyof typeof mockBriefingData];
-        if (mockData) {
-          setBriefingData({
-            id: date,
-            date: date,
-            content: mockData.content,
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString(),
-          });
+      const mockData = mockBriefingData[date as keyof typeof mockBriefingData];
 
-          const mockArticles = mockData.articles.map((article, index) => ({
-            id: `${date}-${index}`,
-            title: article.title,
-            url: article.url,
-            source: article.media_outlet,
-            journalist_name: article.journalist_name,
-            category: { name: article.category },
-          }));
+      if (mockData) {
+        setBriefingData({
+          id: date,
+          date: date,
+          content: mockData.content,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        });
 
-          setArticles(mockArticles);
+        const mockArticles = mockData.articles.map((article, index) => ({
+          id: `${date}-${index}`,
+          title: article.title,
+          url: article.url,
+          source: article.media_outlet,
+          journalist_name: article.journalist_name,
+          category: { name: article.category },
+        }));
 
-          const totalArticles = mockArticles.length;
-          const uniqueSources = new Set(mockArticles.map(a => a.source)).size;
+        setArticles(mockArticles);
 
-          setStats({
-            total: totalArticles,
-            positive: Math.floor(totalArticles * 0.7),
-            caution: Math.floor(totalArticles * 0.2),
-            sources: uniqueSources,
-          });
-        } else {
-          setBriefingData(null);
-          setArticles([]);
-          setStats({ total: 0, positive: 0, caution: 0, sources: 0 });
-        }
-        setLoading(false);
-        return;
-      }
+        const totalArticles = mockArticles.length;
+        const uniqueSources = new Set(mockArticles.map(a => a.source)).size;
 
-      // Fetch briefing
-      const { data: briefing, error: briefingError } = await supabase
-        .from('briefings')
-        .select('*')
-        .eq('date', date)
-        .single();
-
-      if (briefingError) {
-        console.error('Error fetching briefing:', briefingError);
+        setStats({
+          total: totalArticles,
+          positive: Math.floor(totalArticles * 0.7),
+          caution: Math.floor(totalArticles * 0.2),
+          sources: uniqueSources,
+        });
+      } else {
         setBriefingData(null);
         setArticles([]);
         setStats({ total: 0, positive: 0, caution: 0, sources: 0 });
-        setLoading(false);
-        return;
       }
-
-      setBriefingData(briefing);
-
-      // Fetch categories for this briefing
-      const { data: categories, error: categoriesError } = await supabase
-        .from('categories')
-        .select('id, name')
-        .eq('briefing_id', briefing.id);
-
-      if (categoriesError) {
-        console.error('Error fetching categories:', categoriesError);
-        setArticles([]);
-        setStats({ total: 0, positive: 0, caution: 0, sources: 0 });
-        setLoading(false);
-        return;
-      }
-
-      // Fetch articles for these categories
-      const categoryIds = categories.map(cat => cat.id);
-      const { data: articlesData, error: articlesError } = await supabase
-        .from('articles')
-        .select('id, title, url, source, category_id')
-        .in('category_id', categoryIds);
-
-      if (articlesError) {
-        console.error('Error fetching articles:', articlesError);
-        setArticles([]);
-        setStats({ total: 0, positive: 0, caution: 0, sources: 0 });
-        setLoading(false);
-        return;
-      }
-
-      // Transform articles with category names
-      const transformedArticles =
-        articlesData?.map(article => {
-          const category = categories.find(
-            cat => cat.id === article.category_id
-          );
-          return {
-            id: article.id,
-            title: article.title,
-            url: article.url,
-            source: article.source,
-            category: { name: category?.name || '기타' },
-          };
-        }) || [];
-
-      setArticles(transformedArticles);
-
-      // Calculate stats
-      const totalArticles = transformedArticles.length;
-      const uniqueSources = new Set(transformedArticles.map(a => a.source))
-        .size;
-
-      setStats({
-        total: totalArticles,
-        positive: Math.floor(totalArticles * 0.7), // Mock calculation
-        caution: Math.floor(totalArticles * 0.2), // Mock calculation
-        sources: uniqueSources,
-      });
     } catch (error) {
       console.error('Error:', error);
       toast({
