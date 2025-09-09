@@ -45,14 +45,14 @@ const crisisAlerts: CrisisAlert[] = [
     level: 'danger',
     title: '“KT 전 지사에 사제폭탄 설치” 협박글…경찰 추적',
     url: 'https://v.daum.net/v/20250826131837036',
-    journalist_name: '기자명',
+    journalist_name: '문경근',
     journalist_phone: '010-1234-5678',
     reason:
       '공공 안전 위협과 기업 이미지 훼손 위험. 사실 여부와 무관하게 대중 불안 및 고객 이탈 우려.',
     key_sentence:
       '인터넷 커뮤니티에 “KT 지사 건물에 폭탄을 설치하겠다”는 글이 올라와 경찰이 작성자 추적에 착수했다.',
     action_plan:
-      '경찰과 공조한 사실관계 공지, 안전 점검 상황 실시간 공유, 고객센터 비상 응대와 오프라인 영업장 보안 강화.',
+      '경찰과 공조한 사실관계 공지, 안전 점검 상황을 실시간으로 공유하며, 고객센터 비상 응대와 오프라인 영업장 보안을 강화해야 합니다.',
     time: '15분 전',
     source: '연합뉴스',
   },
@@ -61,13 +61,13 @@ const crisisAlerts: CrisisAlert[] = [
     level: 'warning',
     title: 'KT 소액결제 해킹 피해 확산…피해 규모 커질 듯',
     url: 'https://www.asiatime.co.kr/article/20250906500017',
-    journalist_name: '기자명',
+    journalist_name: '김지호',
     journalist_phone: '010-2345-6789',
     reason: '결제 보안 신뢰도 저하로 민원 및 규제 리스크 확대 가능.',
     key_sentence:
       '일부 이용자는 악성앱 설치나 링크 클릭 이력이 없다고 주장해 원인 규명과 보안 점검이 시급하다는 지적이 나온다.',
     action_plan:
-      '피해 접수 전용 창구 개설, 무과실 보상 원칙 안내, 결제 경로 포렌식·이통 3사 공조, 결과 공개.',
+      '피해 접수 전용 창구를 개설하고, 무과실 보상 원칙을 안내하며, 결제 경로 포렌식 및 이통 3사와 공조하여 결과를 공개해야 합니다.',
     time: '1시간 전',
     source: '아시아타임즈',
   },
@@ -76,13 +76,13 @@ const crisisAlerts: CrisisAlert[] = [
     level: 'warning',
     title: '“방통위 결정 무시” 논란…SKT·KT 소비자 뒷전 비판',
     url: 'https://v.daum.net/v/20250904173115436',
-    journalist_name: '기자명',
+    journalist_name: '안지혜',
     journalist_phone: '010-3456-7890',
     reason: '규제기관과의 갈등 노출로 평판·정책 리스크 확대 우려.',
     key_sentence:
       '일각에선 통신사의 소비자 보호 의무를 소홀히 했다는 지적이 제기됐다.',
     action_plan:
-      '방통위 협의체 즉시 제안, 이행 일정과 소비자 보호 조치 공개, 개선 현황 정기 보고.',
+      '방통위 협의체를 즉시 제안하고, 이행 일정과 소비자 보호 조치를 공개하며, 개선 현황을 정기적으로 보고해야 합니다.',
     time: '2시간 전',
     source: '서울경제',
   },

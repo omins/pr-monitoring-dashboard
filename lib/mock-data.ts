@@ -269,14 +269,14 @@ export const mockCrisisAlerts: CrisisAlert[] = [
     level: 'danger',
     title: '“KT 전 지사에 사제폭탄 설치” 협박글…경찰 추적',
     url: 'https://v.daum.net/v/20250826131837036',
-    journalist_name: '기자명',
+    journalist_name: '문경근',
     journalist_phone: '010-1234-5678',
     reason:
       '공공 안전 위협과 기업 이미지 훼손 위험. 사실 여부와 무관하게 대중 불안 및 고객 이탈 우려.',
     key_sentence:
       '인터넷 커뮤니티에 “KT 지사 건물에 폭탄을 설치하겠다”는 글이 올라와 경찰이 작성자 추적에 착수했다.',
     action_plan:
-      '경찰과 공조한 사실관계 공지, 안전 점검 상황 실시간 공유, 고객센터 비상 응대 및 영업장 보안 강화.',
+      '경찰과 공조한 사실관계 공지, 안전 점검 상황을 실시간으로 공유하며, 고객센터 비상 응대 및 영업장 보안을 강화해야 합니다.',
     created_at: '2025-08-26T04:30:00Z',
     status: 'active',
   },
@@ -285,13 +285,13 @@ export const mockCrisisAlerts: CrisisAlert[] = [
     level: 'warning',
     title: '“방통위 결정 무시” 논란…SKT·KT 소비자 뒷전 비판',
     url: 'https://v.daum.net/v/20250904173115436',
-    journalist_name: '기자명',
+    journalist_name: '김지호',
     journalist_phone: '010-2345-6789',
     reason: '규제기관과의 갈등 노출로 평판·정책 리스크 확대 우려.',
     key_sentence:
       '일각에선 통신사의 소비자 보호 의무를 소홀히 했다는 지적이 제기됐다.',
     action_plan:
-      '방통위 협의체 즉시 제안, 이행 일정과 소비자 보호 조치 공개, 개선 현황 정기 보고.',
+      '방통위 협의체를 즉시 제안하고, 이행 일정과 소비자 보호 조치를 공개하며, 개선 현황을 정기적으로 보고해야 합니다.',
     created_at: '2025-09-04T08:15:00Z',
     status: 'monitoring',
   },
@@ -300,12 +300,12 @@ export const mockCrisisAlerts: CrisisAlert[] = [
     level: 'info',
     title: 'KT 인터넷 대규모 장애, 라우팅 오류로 확인(2021.10.25)',
     url: 'https://v.daum.net/v/20211029170049419',
-    journalist_name: '기자명',
+    journalist_name: '안지혜',
     journalist_phone: '010-3456-7890',
     reason: '과거 이슈이나 반복 우려 상존. 장애 대응 표준 절차 점검 필요.',
     key_sentence: 'KT는 디도스 공격이 아닌 내부 라우팅 오류였다고 정정했다.',
     action_plan:
-      '변경관리·롤백 절차 재점검, 재발방지 대책 대외 공개, 모의훈련 정례화.',
+      '변경관리 및 롤백 절차를 재점검하고, 재발방지 대책을 대외에 공개하며, 모의훈련을 정례화해야 합니다.',
     created_at: '2021-10-29T08:45:00Z',
     status: 'resolved',
   },
