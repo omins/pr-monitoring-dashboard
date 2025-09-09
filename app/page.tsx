@@ -54,7 +54,7 @@ const crisisAlerts: CrisisAlert[] = [
     action_plan:
       '경찰과 공조한 사실관계 공지, 안전 점검 상황을 실시간으로 공유하며, 고객센터 비상 응대와 오프라인 영업장 보안을 강화해야 합니다.',
     time: '15분 전',
-    source: '연합뉴스',
+    source: '서울신문',
   },
   {
     id: 2,
@@ -84,7 +84,7 @@ const crisisAlerts: CrisisAlert[] = [
     action_plan:
       '방통위 협의체를 즉시 제안하고, 이행 일정과 소비자 보호 조치를 공개하며, 개선 현황을 정기적으로 보고해야 합니다.',
     time: '2시간 전',
-    source: '서울경제',
+    source: 'SBS Biz',
   },
 ];
 

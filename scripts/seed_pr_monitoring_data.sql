@@ -44,7 +44,7 @@ INSERT INTO articles (category_id, title, source, url, count) VALUES
 ('660e8400-e29b-41d4-a716-446655440001', '디지털 전환 투자 확대', '매일경제', 'https://mk.co.kr/article/1', 13),
 ('660e8400-e29b-41d4-a716-446655440002', '기업 사회공헌 활동 확대', '조선일보', 'https://chosun.com/article/1', 6),
 ('660e8400-e29b-41d4-a716-446655440002', '친환경 경영 실천', '중앙일보', 'https://joongang.co.kr/article/1', 6),
-('660e8400-e29b-41d4-a716-446655440003', '업계 전반 성장세', '서울경제', 'https://sedaily.com/article/1', 4),
+('660e8400-e29b-41d4-a716-446655440003', '업계 전반 성장세', 'SBS Biz', 'https://sedaily.com/article/1', 4),
 ('660e8400-e29b-41d4-a716-446655440003', '경쟁사 동향 분석', '이데일리', 'https://edaily.co.kr/article/1', 4);
 
 -- Insert categories for 2025-09-08
@@ -59,7 +59,7 @@ INSERT INTO articles (category_id, title, source, url, count) VALUES
 ('660e8400-e29b-41d4-a716-446655440004', '해외 진출 로드맵 공개', '매일경제', 'https://mk.co.kr/article/2', 11),
 ('660e8400-e29b-41d4-a716-446655440005', 'CEO 인터뷰 - 미래 비전', '조선일보', 'https://chosun.com/article/2', 5),
 ('660e8400-e29b-41d4-a716-446655440005', '직원 복지 개선 소식', '중앙일보', 'https://joongang.co.kr/article/2', 5),
-('660e8400-e29b-41d4-a716-446655440006', '글로벌 시장 진출 트렌드', '서울경제', 'https://sedaily.com/article/2', 3),
+('660e8400-e29b-41d4-a716-446655440006', '글로벌 시장 진출 트렌드', 'SBS Biz', 'https://sedaily.com/article/2', 3),
 ('660e8400-e29b-41d4-a716-446655440006', '업계 리더십 평가', '이데일리', 'https://edaily.co.kr/article/2', 3);
 
 -- Insert categories for 2025-09-09
@@ -74,7 +74,7 @@ INSERT INTO articles (category_id, title, source, url, count) VALUES
 ('660e8400-e29b-41d4-a716-446655440007', 'ESG 경영 우수 기업 선정', '매일경제', 'https://mk.co.kr/article/3', 12),
 ('660e8400-e29b-41d4-a716-446655440008', '지역사회 상생 프로그램', '조선일보', 'https://chosun.com/article/3', 6),
 ('660e8400-e29b-41d4-a716-446655440008', '청년 일자리 창출 기여', '중앙일보', 'https://joongang.co.kr/article/3', 5),
-('660e8400-e29b-41d4-a716-446655440009', 'ESG 투자 확산 현황', '서울경제', 'https://sedaily.com/article/3', 4),
+('660e8400-e29b-41d4-a716-446655440009', 'ESG 투자 확산 현황', 'SBS Biz', 'https://sedaily.com/article/3', 4),
 ('660e8400-e29b-41d4-a716-446655440009', '기술혁신 경쟁 심화', '이데일리', 'https://edaily.co.kr/article/3', 3);
 
 -- Insert crisis alerts

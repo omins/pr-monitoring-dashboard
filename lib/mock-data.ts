@@ -169,7 +169,7 @@ OTT 경쟁 심화 속 대응 전략과 AI 기반 미디어 서비스 확대가 �
         articles: [
           {
             title: 'KT, AI 숏폼·지니TV AI 에이전트 전략',
-            source: '서울경제 시그널',
+            source: 'SBS Biz 시그널',
             url: 'https://signalm.sedaily.com/NewsView/2GRK1U233H/GK01',
             count: 3,
           },
@@ -246,7 +246,7 @@ AI·플랫폼 중심 사업 전환과 6G·위성·디지털 전환 이슈가 이
           },
           {
             title: 'KT, AI 숏폼·AI 에이전트 전략',
-            source: '서울경제 시그널',
+            source: 'SBS Biz 시그널',
             url: 'https://signalm.sedaily.com/NewsView/2GRK1U233H/GK01',
             count: 3,
           },
